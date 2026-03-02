@@ -1,0 +1,66 @@
+type: grid
+cards:
+  - type: heading
+    icon: mdi:speaker
+    heading: Speaker Controls
+    heading_style: subtitle
+  - type: tile
+    grid_options:
+      columns: 12
+      rows: 1
+    entity: button.esphome_web_673534_pause
+    icon: mdi:play-pause
+    show_entity_picture: false
+    hide_state: true
+    vertical: true
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    icon_tap_action:
+      action: toggle
+    features_position: bottom
+  - type: tile
+    grid_options:
+      columns: 6
+      rows: 1
+    entity: button.esphome_web_673534_vol_2
+    icon: mdi:volume-minus
+    show_entity_picture: false
+    hide_state: true
+    vertical: false
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    icon_tap_action:
+      action: toggle
+    features_position: inline
+  - type: tile
+    grid_options:
+      columns: 6
+      rows: 1
+    entity: button.esphome_web_673534_vol
+    icon: mdi:volume-plus
+    show_entity_picture: false
+    hide_state: true
+    vertical: false
+    tap_action:
+      action: toggle
+    hold_action:
+      action: more-info
+    icon_tap_action:
+      action: toggle
+    features_position: inline
+  - type: tile
+    grid_options:
+      columns: 12
+      rows: 1
+    entity: input_boolean.spkr
+    name: Speaker
+    show_entity_picture: false
+    hide_state: false
+    vertical: false
+    features:
+      - type: toggle
+    features_position: bottom

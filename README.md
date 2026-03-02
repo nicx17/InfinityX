@@ -26,7 +26,7 @@ Power for the ESP32 is drawn directly from the Bluetooth speaker's internal circ
 - Home Assistant
 - Soldering equipment (to connect ESP32 to speaker button pads and power)
 
-## Installation
+## Installation & Configuration
 
 1. Clone this repository or download the files.
 2. Copy `secrets.yaml.example` to `secrets.yaml` and enter your WiFi credentials.
@@ -39,6 +39,27 @@ Power for the ESP32 is drawn directly from the Bluetooth speaker's internal circ
     ```bash
     esphome run esphome-web.yaml
     ```
+
+## Home Assistant Integration
+
+This project is built to be seamlessly integrated directly into Home Assistant using the native **ESPHome Integration**. 
+
+1. **Auto-Discovery:** Once your ESP32 flashes and connects to your local Wi-Fi, the built-in `api:` component broadcasts its presence via mDNS on your network.
+2. **Add to HA:** Open Home Assistant. You should see a notification under **Settings > Devices & Services** saying a new device has been discovered.
+3. **Configure:** Click **Configure** on the discovered ESPHome device. If it isn't automatically discovered, you can add it manually by clicking **Add Integration**, searching for "ESPHome", and entering the IP address of the ESP32.
+4. **Done!** The virtual buttons (Power, Play, Volume Up/Down) and the speaker power status sensor will immediately appear as entities in Home Assistant, ready to be added to dashboards or used in automations.
+
+### Dashboard Examples
+
+Here is how the speaker controls look when added to a Home Assistant dashboard!
+*(You can find the exact YAML for the standalone speaker card in `dashboard_config.yaml`)*
+
+**Standalone Speaker Controls:**
+![Standalone Controls](dashboard-controls.png)
+
+**Full Dashboard View:**
+![Full Dashboard](dashboard-full.png)
+
 
 ## Hardware Configuration & Wiring
 
