@@ -1,0 +1,64 @@
+# ESPHome Infinity Speaker Controller
+
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+This project integrates an ESP32 microcontroller directly inside an Infinity Bluetooth speaker (or similar device) to bring it into Home Assistant. By wiring the ESP32 directly to the speaker's physical Play/Pause, Power, and Volume buttons, the microcontroller mimics physical button presses.
+
+Power for the ESP32 is drawn directly from the Bluetooth speaker's internal circuitry, making it a fully self-contained smart integration without needing an external power supply.
+
+## Features
+
+- **Direct Hardware Integration**: ESP32 mimics physical button presses.
+- **Self-Powered**: Draws power directly from the speaker.
+- **Power Control**: Short and Long Press mimicking via GPIO output.
+- **Playback Control**: Play/Pause mimicking via GPIO output.
+- **Volume Control**: Volume Up/Down mimicking via GPIO output.
+- **Status Sensor**: Reads speaker power state to report back to Home Assistant.
+
+> [!CAUTION]
+> **Always probe your specific hardware first!** 
+> Not all Bluetooth speakers use the same button logic (e.g., active low vs. active high, different voltage levels). You must use a multimeter to probe your speaker's physical buttons and power lines before connecting the ESP32 to ensure compatibility and prevent hardware damage. Revise the GPIO configurations in `esphome-web.yaml` as necessary based on your findings.
+
+## Requirements
+
+- ESP32 microcontroller
+- ESPHome (v2025.9.0 or newer)
+- Home Assistant
+- Soldering equipment (to connect ESP32 to speaker button pads and power)
+
+## Installation
+
+1. Clone this repository or download the files.
+2. Copy `secrets.yaml.example` to `secrets.yaml` and enter your WiFi credentials.
+    ```bash
+    cp secrets.yaml.example secrets.yaml
+    ```
+3. Edit the `secrets.yaml` file to include your actual WiFi SSID and password.
+4. Modify the `substitutions` block at the top of `esphome-web.yaml` if you want to change the device name or friendly name.
+5. Compile and upload the configuration to your ESP32 device using the ESPHome dashboard or CLI:
+    ```bash
+    esphome run esphome-web.yaml
+    ```
+
+## Hardware Configuration & Wiring
+
+Outputs (Active Low, Open Drain) - Connect to the corresponding button pads on the speaker's PCB:
+- GPIO16: PWR (Power button)
+- GPIO17: PP (Play/Pause button)
+- GPIO18: VOLU (Volume + button)
+- GPIO19: VOLD (Volume - button)
+
+Inputs:
+- GPIO34: Speaker Power Status (Connect to a point on the PCB that goes high when the speaker is on)
+
+Power:
+- ESP32 3.3V/5V In: Connect to an appropriate stable voltage source inside the speaker.
+- ESP32 GND: Connect to the speaker's common ground.
+
+## Security and Privacy
+
+To keep your credentials secure, this repository uses a `secrets.yaml` file. This file is ignored by `.gitignore` so your WiFi passwords will not be accidentally uploaded to GitHub. Always use the `secrets.yaml.example` file to show others what variables are required.
+
+## License
+
+This project is licensed under the GPL-3.0 License. See the [LICENSE](LICENSE) file for details.
