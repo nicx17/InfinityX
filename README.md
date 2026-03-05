@@ -2,7 +2,7 @@
 
 [![ESPHome](https://img.shields.io/badge/ESPHome-E2055C?style=for-the-badge&logo=esphome&logoColor=white)](https://esphome.io/)
 [![Home Assistant](https://img.shields.io/badge/Home_Assistant-41BDF5?style=for-the-badge&logo=home-assistant&logoColor=white)](https://www.home-assistant.io/)
-[![License](https://img.shields.io/github/license/nicx17/InfinityX?style=for-the-badge&logo=github&color=2ECC71)](https://github.com/nicx17/InfinityX/blob/main/LICENSE)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-lightgreen.svg?style=for-the-badge)](https://www.gnu.org/licenses/gpl-3.0)
 
 This project integrates an ESP32 microcontroller directly inside an Infinity Bluetooth speaker (or similar device) to bring it into Home Assistant. By wiring the ESP32 directly to the speaker's physical Play/Pause, Power, and Volume buttons, the microcontroller mimics physical button presses.
 
